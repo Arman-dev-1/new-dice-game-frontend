@@ -61,7 +61,7 @@ export default function Home() {
       setCurrentRollPublicSeed(publicSeed);
 
       // Request a dice roll from the server
-      const response = await axios.post("http://localhost:3001/roll", { publicSeed });
+      const response = await axios.post("https://new-dice-game-backend.onrender.com/roll", { publicSeed });
       const { dice, hash, serverSeed } = response.data;
 
       setDiceRoll(dice);
@@ -106,7 +106,7 @@ export default function Home() {
   const verifyRoll = async () => {
     try {
       // Use the public seed from the current roll for verification.
-      const response = await axios.post("http://localhost:3001/verify", {
+      const response = await axios.post("https://new-dice-game-backend.onrender.com/verify", {
         publicSeed: currentRollPublicSeed,
         serverSeed,
         originalHash: hash,
